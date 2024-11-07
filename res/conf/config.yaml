@@ -1,0 +1,31 @@
+db:
+    mysql:
+        -
+            host: "hk.198587.xyz"
+            user: "yushu"
+            password: "4DkCbXx4eXxZ8nYM"
+            database: "yushu"
+            port: 3306
+            timeout: "30s"
+            table_prefix: "yushu_"
+            max_idle_conn: 10
+            max_open_conn: 100
+            conn_max_lifetime_second: 3600
+        -
+            host: "server.ip-ns.eu.org"
+            user: "xiaolin"
+            password: "123456"
+            database: "xiaolin"
+            port: 3306
+            timeout: "30s"
+            table_prefix: "yushu_"
+            max_idle_conn: 10
+            max_open_conn: 100
+            conn_max_lifetime_second: 3600
+    redis:
+        host: "154.12.63.133"
+        port: 6379
+        password: ""
+router:
+    port: 8999
+    host: "0.0.0.0"
