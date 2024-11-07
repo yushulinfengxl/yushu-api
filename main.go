@@ -6,11 +6,17 @@ import (
 	"image/jpeg"
 	"image/png"
 	"log"
-	"yushu/opt/file"
-	"yushu/opt/pic"
+	"yushu/box/config"
+	"yushu/box/file"
+	"yushu/box/pic"
 )
 
 func main() {
+	conf := config.NewApp()
+	log.Println(conf)
+}
+
+func main2() {
 	r := gin.New()
 	//conf := config.New()
 

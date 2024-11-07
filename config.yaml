@@ -13,12 +13,12 @@ server:
   max_header_bytes: "20KB" # 请求头的最大字节数
   client_max_body_size: "50MB" # 请求体最大字节数
   # Logging 配置
-  log_path: "resource/log/server"                 # 日志文件存储目录路径，建议使用绝对路径。默认为空，表示关闭
-  log_stdout: true               # 日志是否输出到终端。默认为true
-  error_stack: true               # 当Server捕获到异常时是否记录堆栈信息到日志中。默认为true
-  error_log_enabled: true               # 是否记录异常日志信息到日志中。默认为true
-  error_log_pattern: "error-{Ymd}.log"  # 异常错误日志文件格式。默认为"error-{Ymd}.log"
-  access_log_enabled: true              # 是否记录访问日志。默认为false
+  log_filepath: "resource/log/server" # 日志文件存储目录路径，建议使用绝对路径。默认为空，表示关闭
+  log_stdout: true # 日志是否输出到终端。默认为true
+  error_stack: true # 当Server捕获到异常时是否记录堆栈信息到日志中。默认为true
+  error_log_enabled: true # 是否记录异常日志信息到日志中。默认为true
+  error_log_pattern: "error-{Ymd}.log" # 异常错误日志文件格式。默认为"error-{Ymd}.log"
+  access_log_enabled: true # 是否记录访问日志。默认为false
   access_log_pattern: "access-{Ymd}.log" # 访问日志文件格式。默认为"access-{Ymd}.log"
 
 
@@ -74,3 +74,9 @@ database:
 
 
 
+# tencent 配置
+tencent:
+  dnspod:
+    secretId: ""
+    secretKey: ""
+    dnsPodUrl: "dnspod.tencentcloudapi.com"
