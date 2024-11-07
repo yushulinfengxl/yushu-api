@@ -24,8 +24,8 @@ func Conn() *Connected {
 
 func init() {
 	c := Conn()
-	c.SecretId = "AKIDDWzRo7KNeptqfbSEvdEuV9i6XxQgnvxh"
-	c.SecretKey = "x0kcSLMPk3LxZ7FMWepCVwVF7x8HORG1"
+	c.SecretId = ""
+	c.SecretKey = ""
 	c.DnsPodUrl = "dnspod.tencentcloudapi.com"
 	c.Credential = common.NewCredential(
 		c.SecretId,
