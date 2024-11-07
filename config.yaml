@@ -74,9 +74,3 @@ database:
 
 
 
-# tencent 配置
-tencent:
-  dnspod:
-    secretId: "AKIDDWzRo7KNeptqfbSEvdEuV9i6XxQgnvxh"
-    secretKey: "x0kcSLMPk3LxZ7FMWepCVwVF7x8HORG1"
-    dnsPodUrl: "dnspod.tencentcloudapi.com"
