@@ -7,13 +7,26 @@ import (
 	"image/png"
 	"log"
 	"yushu/box/config"
-	"yushu/box/file"
+	"yushu/box/filesystem"
+	"yushu/box/logger"
 	"yushu/box/pic"
 )
 
+func selector() {
+	v := new(struct{})
+	n1 := true
+	if v == nil {
+		n1 = false
+	}
+	for n1 {
+
+	}
+}
+
 func main() {
-	conf := config.NewApp()
-	log.Println(conf)
+	conf := config.New()
+	logger.Info(logger.ErrorType, "初始化配置文件", conf)
+	selector()
 }
 
 func main2() {
@@ -23,7 +36,7 @@ func main2() {
 	r.GET("/img-text", func(c *gin.Context) {
 		imgUrl := c.Query("img")
 		text := c.Query("text")
-		fontFilePath := file.AppPath("./font-jianti.ttf")
+		fontFilePath := filesystem.AppPath("./font-jianti.ttf")
 
 		img, err := pic.ImageText(imgUrl, text, fontFilePath, 48)
 		if err != nil {
@@ -57,7 +70,7 @@ func main2() {
 	r.GET("/acg/img", func(c *gin.Context) {
 		imgUrl := "https://api.miaomc.cn/image/get"
 		text := "i站:小林"
-		fontFilePath := file.AppPath("./font-jianti.ttf")
+		fontFilePath := filesystem.AppPath("./font-jianti.ttf")
 
 		img, err := pic.ImageText(imgUrl, text, fontFilePath, 48)
 		if err != nil {

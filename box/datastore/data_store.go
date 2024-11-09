@@ -2,7 +2,7 @@ package datastore
 
 import (
 	"sync"
-	"yushu/box/config"
+	"yushu/box/datatable/hashmap"
 	"yushu/box/utility/singleton"
 )
 
@@ -17,10 +17,9 @@ type DsInterface interface {
 }
 
 type DataStore struct {
-	_config   *config.Config
 	_key      string
 	_value    interface{}
-	_dataZone *DataHashMap
+	_dataZone *hashmap.HashMap
 	_queue    chan struct{}
 	_mutex    *sync.Mutex
 	_rwMutex  *sync.RWMutex
@@ -29,12 +28,20 @@ type DataStore struct {
 var dataLazySingleton singleton.Lazy
 
 func New() *DataStore {
-	ins := dataLazySingleton.Instance(&DataStore{})
+	ins := dataLazySingleton.Instance(&DataStore{
+		_dataZone: hashmap.NewHashMap(),
+	})
 	return (*ins).(*DataStore)
 }
 
-func (ds *DataStore) Config() *config.Config {
-	return ds._config
+func Set(key string, value interface{}) {
+	ds := New()
+	ds._dataZone.Set(key, value)
+}
+
+func Get(key string) (value interface{}, err error) {
+	ds := New()
+	return ds._dataZone.Get(key)
 }
 
 // Put 存入队列
@@ -45,26 +52,4 @@ func (ds *DataStore) Put() {
 // Leave 释放队列
 func (ds *DataStore) Leave() {
 	<-ds._queue
-}
-
-func Get(key string) (interface{}, bool) {
-	return New()._dataZone.Get(key)
-}
-
-func Set(key string, value interface{}) {
-	New()._dataZone.Add(key, value)
-}
-
-// init 初始化 datastore
-func init() {
-	conf := config.New()
-	if conf == nil {
-		panic("config is nil")
-	}
-	ds := New()
-	ds._config = conf
-	ds._queue = make(chan struct{}, conf.Queue.MaxConnNum)
-	ds._dataZone = NewHashMap()
-	// 配置文件
-	ds._dataZone.Add("config", conf)
 }

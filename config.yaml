@@ -2,12 +2,14 @@
 server:
   address:     ":5000" # 服务监听地址
   max_conn:     100 # 最大连接数
+  access_key:   "adminKey" # 访问密钥
   read_timeout:  "60s" # 读超时时间
+  api_prefix: "/api" # API 路由前缀
   static_base_uri: "/static" # 静态资源路由前缀
-  static_path: "/resource/public" # 静态资源目录
+  static_path: "resource/public" # 静态资源目录
 #  dumpRouterMap: false # 是否打印路由表
 #  routeOverWrite: true # 是否覆盖路由
-  openapi_path: "/api.json" # OpenAPI 路径
+  openapi_path: "api.json" # OpenAPI 路径
   swagger_path: "/swagger" # Swagger UI 路径
 #  NameToUriType: 3 # 路由名称转URI 的策略
   max_header_bytes: "20KB" # 请求头的最大字节数
@@ -46,18 +48,6 @@ database:
         user: "yushu"
         password: "ZehsPXyKKYyec7az"
         database: "yushu"
-        port: 3306
-        timeout: "30s"
-      - host: "localhost"
-        user: "root"
-        password: "admin"
-        database: "dbname"
-        port: 3306
-        timeout: "30s"
-      - host: "localhost2"
-        user: "root"
-        password: "admin"
-        database: "dbname"
         port: 3306
         timeout: "30s"
   # Redis 配置示例

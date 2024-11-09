@@ -6,14 +6,19 @@ import (
 
 type Router struct {
 	groupName string
-	Route
+	RouteInterface
 }
 
 var routerLazySingleton *singleton.Lazy
 
-func New(opt ...interface{}) *Router {
-	ins := routerLazySingleton.Instance(new(Router))
+type FrameworkInterface interface {
+	Use(...HandlerFunc)
+	GET(string, ...HandlerFunc)
+	Run(addr ...string) error
+}
 
+func Register(opt ...interface{}) *Router {
+	ins := routerLazySingleton.Instance(new(Router))
 	return (*ins).(*Router)
 }
 

@@ -2,11 +2,9 @@ package tcp
 
 import (
 	"fmt"
-	"log"
 	"net"
 	"sync"
 	"time"
-	"yushu/util"
 )
 
 func LocalHostScan() {
@@ -55,16 +53,16 @@ func PortScan(host string, startPort int, endPort int) {
 
 func Ping(addr string) {
 	// 耗时检测time
-	durationTime := util.MeasureTime(func() {
-		conn, err := net.DialTimeout("tcp", addr, 30*time.Second)
-		if err != nil {
-			return
-		}
-		fmt.Printf("端口:%v\t已被占用\n", addr)
-		err = conn.Close()
-		if err != nil {
-			fmt.Printf("%v\t关闭失败\n", addr)
-		}
-	})
-	log.Println(durationTime, "kkk")
+	//durationTime := utility.MeasureTime(func() {
+	//	conn, err := net.DialTimeout("tcp", addr, 30*time.Second)
+	//	if err != nil {
+	//		return
+	//	}
+	//	fmt.Printf("端口:%v\t已被占用\n", addr)
+	//	err = conn.Close()
+	//	if err != nil {
+	//		fmt.Printf("%v\t关闭失败\n", addr)
+	//	}
+	//})
+	//log.Println(durationTime, "kkk")
 }
